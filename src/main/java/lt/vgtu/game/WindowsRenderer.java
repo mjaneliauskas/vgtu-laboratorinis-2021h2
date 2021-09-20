@@ -62,7 +62,7 @@ public class WindowsRenderer {
 	}
 	
 	private void drawImage(Graphics g, BufferedImage image, int x, int y) {
-		g.drawImage(this.rocketImg, scaleUp(x), scaleUp(y), this.WIDTH, this.HEIGHT, null);
+		g.drawImage(image, scaleUp(x), scaleUp(y), this.WIDTH, this.HEIGHT, null);
 	}
 	
 	private static int scaleUp(int coordinate) {
@@ -84,5 +84,4 @@ public class WindowsRenderer {
 		
 		return false;
 	}		
-
 }
