@@ -11,7 +11,9 @@ public class WindowsRenderer {
 
 	private List<Rocket> rockets;
 	private Map map;
-	
+	private final int WIDTH = 20;
+	private final int HEIGHT = 20;
+		
 	private BufferedImage flameImg;
 	private BufferedImage rocketImg;
 	private BufferedImage asteroidImg;
@@ -43,20 +45,28 @@ public class WindowsRenderer {
 			}
 		}	
 	}
-
+		
 	private void drawSpace(Graphics g, int x, int y) {
 	}
 
 	private void drawRocketHead(Graphics g, int x, int y) {
-		g.drawImage(rocketImg, 50+x*20, 50+y*20, 20, 20, null);
+		drawImage(Graphics g, this.rocketImg, x, y);
 	}
 
 	private void drawRocketTail(Graphics g, int x, int y) {
-		g.drawImage(this.flameImg, 50+x*20, 50+y*20, 20, 20, null);
+		drawImage(Graphics g, this.flameImg, x, y);		
 	}
 
 	private void drawAsteroid(Graphics g, int x, int y) {
-		g.drawImage(this.asteroidImg, 50+x*20, 50+y*20, 20, 20, null);
+		drawImage(Graphics g, this.asteroidImg, x, y);
+	}
+	
+	private void drawImage(Graphics g, BufferedImage image, int x, int y) {
+		g.drawImage(this.rocketImg, scaleUp(x), scaleUp(y), this.WIDTH, this.HEIGHT, null);
+	}
+	
+	private static int scaleUp(int coordinate) {
+		return 50+coordinate*20;
 	}
 	
 	private boolean isRocketHead(int x, int y) {
@@ -73,5 +83,6 @@ public class WindowsRenderer {
 				return true;
 		
 		return false;
-	}
+	}		
+
 }
